@@ -1,0 +1,47 @@
+### Ejemplo 1
+Pregunta: ¿Cuáles son los tres productos más vendidos?
+SQL:
+SELECT TOP 3
+    p.Name,
+    SUM(sod.LineTotal) AS TotalSales
+FROM SalesLT.SalesOrderDetail sod
+JOIN SalesLT.Product p ON sod.ProductID = p.ProductID
+GROUP BY p.Name
+ORDER BY TotalSales DESC;
+
+### Ejemplo 2
+Pregunta: ¿Qué producto tuvo las mayores ventas totales?
+SQL:
+SELECT TOP 1
+    p.Name,
+    SUM(sod.LineTotal) AS TotalSales
+FROM SalesLT.SalesOrderDetail sod
+JOIN SalesLT.Product p ON sod.ProductID = p.ProductID
+GROUP BY p.Name
+ORDER BY TotalSales DESC;
+
+### Ejemplo 3
+Pregunta: ¿Cuánto se vendió en total?
+SQL:
+SELECT SUM(LineTotal) AS TotalSales
+FROM SalesLT.SalesOrderDetail;
+
+### Ejemplo 4
+Pregunta: ¿Cuántos productos hay registrados?
+SQL:
+SELECT COUNT(*) AS TotalProducts FROM SalesLT.Product;
+
+### Ejemplo 5
+Pregunta: ¿Cuántas órdenes se registraron en total?
+SQL:
+SELECT COUNT(*) AS TotalOrders FROM SalesLT.SalesOrderHeader;
+
+### Ejemplo 6
+Pregunta: ¿Qué productos tienen más de 100 ventas?
+SQL:
+SELECT p.Name, SUM(sod.OrderQty) AS TotalQuantity
+FROM SalesLT.SalesOrderDetail sod
+JOIN SalesLT.Product p ON sod.ProductID = p.ProductID
+GROUP BY p.Name
+HAVING SUM(sod.OrderQty) > 100
+ORDER BY TotalQuantity DESC;

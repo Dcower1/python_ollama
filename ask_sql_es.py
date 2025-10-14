@@ -5,7 +5,7 @@ import streamlit as st
 # --- CONFIGURACIÓN BASE ---
 SQL_INSTANCE = r"localhost\SQLEXPRESS"
 DATABASE     = "AdventureWorksLT2022"
-OLLAMA_MODEL = "llama3:latest"
+OLLAMA_MODEL = "llama3-sql"
 
 # --- FUNCIONES ---
 def run_sqlcmd(query: str):

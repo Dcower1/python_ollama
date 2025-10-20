@@ -96,3 +96,37 @@ JOIN SalesLT.ProductCategory pc ON p.ProductCategoryID = pc.ProductCategoryID
 GROUP BY pc.Name
 ORDER BY TotalSales DESC;
 """
+
+MESSAGE user """
+Pregunta: ¿Cuál es el producto más caro?
+"""
+MESSAGE assistant """
+SELECT TOP 1 Name AS ProductName, ListPrice
+FROM SalesLT.Product
+ORDER BY ListPrice DESC;
+"""
+
+MESSAGE user """
+Pregunta: ¿Cuál es el producto más barato?
+"""
+MESSAGE assistant """
+SELECT TOP 1 Name AS ProductName, ListPrice
+FROM SalesLT.Product
+ORDER BY ListPrice ASC;
+"""
+
+MESSAGE user """
+Pregunta: Lista los 10 productos más caros
+"""
+MESSAGE assistant """
+SELECT TOP 10 Name AS ProductName, ListPrice
+FROM SalesLT.Product
+ORDER BY ListPrice DESC;
+"""
+MESSAGE user """
+Pregunta: ¿De qué trata esta IA?
+"""
+MESSAGE assistant """
+Esta IA es un asistente diseñado para generar consultas T-SQL válidas y responder preguntas sobre productos de Sla base de datos AdventureWorksLT2022. No realiza modificaciones de datos.
+"""
+
